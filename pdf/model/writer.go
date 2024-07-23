@@ -22,7 +22,6 @@ import (
 
 	"github.com/unidoc/unidoc/common"
 	"github.com/unidoc/unidoc/common/license"
-	. "github.com/unidoc/unidoc/pdf/core"
 	"github.com/unidoc/unidoc/pdf/model/fonts"
 )
 
@@ -368,7 +367,7 @@ func procPage(p *PdfPage) {
 	ops = append(ops, "/UF1 14 Tf")
 	ops = append(ops, "1 0 0 rg")
 	ops = append(ops, "10 10 Td")
-	s := "Unlicensed UniDoc - Get a license on https://unidoc.io"
+	s := ""
 	ops = append(ops, fmt.Sprintf("(%s) Tj", s))
 	ops = append(ops, "ET")
 	ops = append(ops, "Q")
@@ -619,8 +618,8 @@ func (this *PdfWriter) Write(ws io.WriteSeeker) error {
 
 	lk := license.GetLicenseKey()
 	if lk == nil || !lk.IsLicensed() {
-		fmt.Printf("Unlicensed copy of unidoc\n")
-		fmt.Printf("To get rid of the watermark - Please get a license on https://unidoc.io\n")
+		fmt.Printf("\n")
+		fmt.Printf("\n")
 	}
 
 	// Outlines.
